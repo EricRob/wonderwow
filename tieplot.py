@@ -11,10 +11,10 @@ i = 0
 for sub in subjects:
     screen = subjects[sub].dropna().sort_values(ascending=False)
     color = 'b'
-    label = 'Screen A'
     for x in screen:
         if i == 0:
             plt.barh(sub, x, color=color, label = 'Screen A', height = 0.5)
+            color = 'r'
         elif i == 1:
             plt.barh(sub, x, color=color, label = 'Screen B', height = 0.5)
         else:
