@@ -293,7 +293,7 @@ for i in range(len(group_order)):
         plt.plot(idx+width/2, pct,'o', c='k', mfc='none')
 
 plt.xticks(np.arange(1, len(group_order)+2), ['total'] + group_order)
-plt.axis([0.5,len(group_order) + 0.5,0,100])
+plt.axis([0.5,len(group_order) + 1.5,0,100])
 plt.show()
 plt.legend(loc='upper right')
 plt.title('Screen time by section')
