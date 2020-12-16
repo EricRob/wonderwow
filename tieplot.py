@@ -168,6 +168,8 @@ plt.ylabel('Percent of total time')
 
 
 # Building per-section paired plots
+
+# af = pd.read_csv('https://raw.githubusercontent.com/EricRob/wonderwow/main/annotation.csv')
 sub_df = af.iloc[:,0]
 an_sections = []
 
@@ -246,6 +248,7 @@ for i in range(1,len(af.columns),2):
             st_a = np.append(st_a,end-0.1)
         elif (not start_a and end_a):
             st_b = np.append(st_b,end-0.1)
+        
         # screen time is the sum of intervals
         if start_a:
             times_a = st_a - st_b
@@ -284,8 +287,8 @@ for i in range(1,len(af.columns),2):
 # Draw the paired bar plots with individual data points
 for i in range(len(group_order)):
     idx = i + 2
-    plt.bar(idx-width/2, np.mean(group_a_pcts[i]), width = width, color='orange', label='Screen A')
-    plt.bar(idx+width/2, np.mean(group_b_pcts[i]), width = width, color='blue', label='Screen B')    
+    plt.bar(idx-width/2, np.mean(group_a_pcts[i]), width = width, color='orange')
+    plt.bar(idx+width/2, np.mean(group_b_pcts[i]), width = width, color='skyblue')    
 
     for pct in group_a_pcts[i]:
         plt.plot(idx-width/2, pct,'o', c='k', mfc='none')
@@ -294,12 +297,11 @@ for i in range(len(group_order)):
 
 plt.xticks(np.arange(1, len(group_order)+2), ['total'] + group_order)
 plt.axis([0.5,len(group_order) + 1.5,0,100])
-plt.show()
-plt.legend(loc='upper right')
+
+plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.1), fancybox=True, shadow=True, ncol=5)
 plt.title('Screen time by section')
-pdb.set_trace()
 
-
+plt.show()
 
 
 
